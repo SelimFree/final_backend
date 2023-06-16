@@ -94,17 +94,17 @@ class PostTest extends TestCase
     {
         // Create a new post
         $post = Post::factory()->create();
-
+    
         // Send a DELETE request to the destroy endpoint with the post's ID
         $response = $this->delete('/api/posts/' . $post->id);
-
+    
         // Assert that the response has a successful status code (200)
         $response->assertStatus(200);
-
+    
         // Assert that the response contains the correct success message
         $response->assertJson(['message' => 'Post deleted successfully']);
-
+    
         // Assert that the post has been deleted from the database
-        $this->assertDeleted('posts', $post->toArray());
+        $this->assertDatabaseMissing('posts', ['id' => $post->id]);
     }
 }
