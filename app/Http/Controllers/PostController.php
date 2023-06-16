@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**
+     * Get a list of all posts.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $posts = Post::all();
@@ -13,9 +19,15 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
-    public function show($id)
+    /**
+     * Get a specific post by ID.
+     *
+     * @param  int  $postId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($postId)
     {
-        $post = Post::find($id);
+        $post = Post::find($postId);
 
         if (!$post) {
             return response()->json(['error' => 'Post not found'], 404);
@@ -24,10 +36,16 @@ class PostController extends Controller
         return response()->json($post);
     }
 
+    /**
+     * Create a new post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'abstract' => 'required',
             'content' => 'required',
         ]);
@@ -42,9 +60,15 @@ class PostController extends Controller
         return response()->json($post, 201);
     }
 
-    public function destroy(Request $request, $id)
+    /**
+     * Delete a post by ID.
+     *
+     * @param  int  $postId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($postId)
     {
-        $post = Post::find($id);
+        $post = Post::find($postId);
 
         if (!$post) {
             return response()->json(['error' => 'Post not found'], 404);
