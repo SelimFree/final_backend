@@ -2,29 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
-    
+    protected $table = 'posts';
+    protected $primaryKey = 'Id';
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
-        'abstract',
-        'content',
-        'posted',
+        'Title',
+        'Abstract',
+        'Content',
+        'Posted',
     ];
-
-    public function categories()
-    {
-        return $this->hasMany(PostCate::class, 'postId', 'id');
-    }
-
-    public function comment()
-    {
-        return $this->hasMany(Comment::class, 'postId', 'id');
-    }
 }
