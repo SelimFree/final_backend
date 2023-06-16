@@ -54,6 +54,7 @@ class PostTest extends TestCase
             'title' => $post->title,
             'abstract' => $post->abstract,
             'content' => $post->content,
+            'posted' => $post->posted,
         ]);
     }
 

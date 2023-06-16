@@ -11,11 +11,11 @@ class User extends Model
     use HasFactory, Notifiable;
     
     protected $table = 'users';
-    protected $primaryKey = 'Name';
+    protected $primaryKey = 'name';
     public $timestamps = false;
 
     protected $fillable = [
-        'Email',
-        'Hash',
+        'email',
+        'hash',
     ];
 }
