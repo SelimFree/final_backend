@@ -6,9 +6,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Post;
-use App\Models\PostCate;
-use App\Models\Category;
-use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,8 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create();
-
+        User::factory()->count(5)->create();
         Post::factory()->count(10)->create();
     }
 }
