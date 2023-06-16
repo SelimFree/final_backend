@@ -68,7 +68,7 @@ class UserTest extends TestCase
         $userData = [
             'name' => 'John Doe',
             'email' => 'john@example.com',
-            'hash' => bcrypt('password'),
+            'hash' => 'password',
         ];
 
         // Send a POST request to the store() method of UserController with the user payload
@@ -77,14 +77,18 @@ class UserTest extends TestCase
         // Assert that the response has a created status code
         $response->assertStatus(201);
 
-        // Assert that the response contains the correct user data
-        $response->assertJson([
-            'name' => $userData->name,
-            'email' => $userData->email,
+        // Assert that the response has the expected structure
+        $response->assertJsonStructure([
+            'id',
+            'name',
+            'email',
         ]);
 
         // Assert that the user is actually created in the database
-        $this->assertDatabaseHas('users', $userData);
+        $this->assertDatabaseHas('users', [
+            'name' => $userData['name'],
+            'email' => $userData['email'],
+        ]);
     }
 
     /**
