@@ -17,7 +17,7 @@ use App\Http\Resources\ArticleResource;
 |
 */
 Route::get('/article/{id}', function ($id) {
-    return new ArticleResource(Article::findOrfail($id));
+    return [new ArticleResource(Article::findOrfail($id))];
 });
 
 Route::get('/articles', function () {
