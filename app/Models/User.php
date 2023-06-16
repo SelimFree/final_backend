@@ -14,8 +14,23 @@ class User extends Model
     protected $primaryKey = 'name';
     public $timestamps = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
+        'name',
         'email',
+        'hash',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
         'hash',
     ];
 }
