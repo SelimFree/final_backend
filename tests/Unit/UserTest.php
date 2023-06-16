@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
-class UserControllerTest extends TestCase
+class UserTest extends TestCase
 {
     use DatabaseTransactions;
 
