@@ -11,7 +11,7 @@ class User extends Model
     use HasFactory, Notifiable;
     
     protected $table = 'users';
-    protected $primaryKey = 'name';
+    protected $primaryKey = 'id';
     public $timestamps = false;
 
     /**
