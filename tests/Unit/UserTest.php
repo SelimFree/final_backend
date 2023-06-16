@@ -78,7 +78,10 @@ class UserTest extends TestCase
         $response->assertStatus(201);
 
         // Assert that the response contains the correct user data
-        $response->assertJson($userData);
+        $response->assertJson([
+            'name' => $user->name,
+            'email' => $user->email,
+        ]);
 
         // Assert that the user is actually created in the database
         $this->assertDatabaseHas('users', $userData);
