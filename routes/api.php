@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Article;
+use App\Http\Controllers\ArticleController;
+use App\Http\Resources\ArticleResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/article/{id}', function ($id) {
+    return new ArticleResource(Article::findOrfail($id));
+});
+
+Route::get('/articles', function () {
+    return  ArticleResource::collection(Article::all());
+});
+
+
+Route::put('/article/{id}',[ArticleController::class, 'update']);
+
+Route::delete('/article/{id}',[ArticleController::class, 'destroy']);
+
+Route::post('/articles',[ArticleController::class, 'store']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
