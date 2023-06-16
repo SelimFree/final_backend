@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('Title');
             $table->string('Abstract');
-            $table->string('Content');
+            $table->string('Content', 32767);
             $table->string('Posted');
         });
     }
