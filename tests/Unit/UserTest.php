@@ -5,7 +5,6 @@ namespace Tests\Unit\Controllers;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;

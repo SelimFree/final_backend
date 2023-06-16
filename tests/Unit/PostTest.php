@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Feature\Controllers;
+namespace Tests\Unit\Controllers;
 
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
