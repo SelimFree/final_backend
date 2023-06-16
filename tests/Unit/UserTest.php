@@ -25,7 +25,7 @@ class UserTest extends TestCase
         User::factory()->count(5)->create();
 
         // Send a GET request to the index() method of UserController
-        $response = $this->get('/users');
+        $response = $this->get('/api/users');
 
         // Assert that the response has a successful status code
         $response->assertStatus(200);
@@ -45,7 +45,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
 
         // Send a GET request to the show() method of UserController with the user ID
-        $response = $this->get('/users/' . $user->id);
+        $response = $this->get('/api/users/' . $user->id);
 
         // Assert that the response has a successful status code
         $response->assertStatus(200);
@@ -72,7 +72,7 @@ class UserTest extends TestCase
         ];
 
         // Send a POST request to the store() method of UserController with the user payload
-        $response = $this->post('/users', $userData);
+        $response = $this->post('/api/users', $userData);
 
         // Assert that the response has a created status code
         $response->assertStatus(201);
@@ -95,7 +95,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
 
         // Send a DELETE request to the destroy() method of UserController with the user ID
-        $response = $this->delete('/users/' . $user->id);
+        $response = $this->delete('/api/users/' . $user->id);
 
         // Assert that the response has a successful status code
         $response->assertStatus(200);
