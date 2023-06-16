@@ -4,13 +4,13 @@ namespace Tests\Unit;
 
 use App\Http\Controllers\PostController;
 use App\Models\Post;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
-    use DatabaseTransactions, WithFaker;
+    use RefreshDatabase, WithFaker;
 
     /**
      * Test the index method of PostController.
