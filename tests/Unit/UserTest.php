@@ -68,7 +68,6 @@ class UserTest extends TestCase
         $userData = [
             'name' => 'John Doe',
             'email' => 'john@example.com',
-            'hash' => 'password',
         ];
 
         // Send a POST request to the store() method of UserController with the user payload
