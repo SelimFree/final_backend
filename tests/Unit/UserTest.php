@@ -45,7 +45,7 @@ class UserTest extends TestCase
         $user = User::factory()->create();
 
         // Send a GET request to the show() method of UserController with the user ID
-        $response = $this->get('/api/users/' . $user->id);
+        $response = $this->get('/api/users/' . $user->name);
 
         // Assert that the response has a successful status code
         $response->assertStatus(200);
@@ -95,12 +95,12 @@ class UserTest extends TestCase
         $user = User::factory()->create();
 
         // Send a DELETE request to the destroy() method of UserController with the user ID
-        $response = $this->delete('/api/users/' . $user->id);
+        $response = $this->delete('/api/users/' . $user->name);
 
         // Assert that the response has a successful status code
         $response->assertStatus(200);
 
         // Assert that the user is actually deleted from the database
-        $this->assertDatabaseMissing('users', ['id' => $user->id]);
+        $this->assertDatabaseMissing('users', ['name' => $user->name]);
     }
 }
