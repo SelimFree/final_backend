@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory, Notifiable;
 
     protected $table = 'posts';
-    protected $primaryKey = 'Id';
+    protected $primaryKey = 'id';
     public $timestamps = false;
 
     protected $fillable = [
